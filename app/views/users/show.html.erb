@@ -1,4 +1,16 @@
 <div class="contents row">
+
+
+
+ <% if @user.avatar.attached? %>
+   <%= image_tag @user.avatar%> 
+     <% end %> 
+<%= @user.profile %> 
+
+<% if user_signed_in? && current_user.id == @user.id %>
+<%= link_to 'ユーザー情報を編集する', edit_user_registration_path %>
+<% end %> 
+
   <p><%= @nickname %>さんの投稿一覧</p>
   <% @tweets.each do |tweet| %>
 <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>
