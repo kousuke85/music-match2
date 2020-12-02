@@ -9,7 +9,20 @@
 
 <% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to 'ユーザー情報を編集する', edit_user_registration_path %>
+<%= link_to 'youtubeを投稿する', new_post_path %>
 <% end %> 
+
+<% @posts.each do |post| %>
+<p>
+  <strong>Body:</strong>
+  <%= post.body %>
+</p>
+
+<p>
+  <strong>Youtube url:</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+   <% end %> 
 
   <p><%= @nickname %>さんの投稿一覧</p>
   <% @tweets.each do |tweet| %>
