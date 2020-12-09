@@ -3,14 +3,16 @@
 
 
  <% if @user.avatar.attached? %>
-   <%= image_tag @user.avatar%> 
+   <%= image_tag @user.avatar.variant(resize: '1000x1000')%> 
      <% end %> 
-<%= @user.profile %> 
+
 
 <% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to 'ユーザー情報を編集する', edit_user_registration_path %>
 <%= link_to 'youtubeを投稿する', new_post_path %>
 <% end %> 
+
+<%= @user.profile %> 
 
 <% @posts.each do |post| %>
 <p>
