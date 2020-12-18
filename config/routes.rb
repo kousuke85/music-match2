@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :users
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 end
